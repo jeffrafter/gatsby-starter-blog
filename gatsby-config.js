@@ -1,5 +1,3 @@
-const path = require(`path`);
-
 module.exports = {
   siteMetadata: {
     title: `Gatsby Starter Blog`,
@@ -58,12 +56,6 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         //trackingId: `ADD YOUR TRACKING ID HERE`,
-      }
-    },
-    {
-      resolve: "gatsby-plugin-tags",
-      options: {
-        templatePath: path.join(__dirname, "/src/templates/tag.js")
       }
     },
     `gatsby-plugin-feed`,

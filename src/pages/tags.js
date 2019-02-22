@@ -19,13 +19,16 @@ class BlogTags extends React.Component {
         />
         <Bio />
         <ul>
-          {group.map(tag => (
-            <li key={tag.fieldValue}>
-              <Link to={`/tags/${tag.fieldValue}/`}>
-                {tag.fieldValue} ({tag.totalCount})
-              </Link>
-            </li>
-          ))}
+          {group.map(
+            tag =>
+              tag && (
+                <li key={tag.fieldValue}>
+                  <Link to={`/tags/${tag.fieldValue}/`}>
+                    {tag.fieldValue} ({tag.totalCount})
+                  </Link>
+                </li>
+              )
+          )}
         </ul>
       </Layout>
     );

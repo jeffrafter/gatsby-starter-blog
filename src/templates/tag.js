@@ -8,6 +8,7 @@ class TagTemplate extends React.Component {
   render() {
     const { pageContext, data } = this.props;
     const { tag } = pageContext;
+    const siteTitle = data.site.siteMetadata.title;
     const posts = data.allMarkdownRemark.edges;
 
     return (
@@ -37,23 +38,24 @@ export default TagTemplate;
 
 export const pageQuery = graphql`
   query TagPage($tag: String) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       limit: 1000
-      filter: { fields: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
       edges {
         node {
           fields {
             slug
-            tags
           }
           excerpt
-          timeToRead
           frontmatter {
             title
-            tags
-            date
           }
         }
       }
